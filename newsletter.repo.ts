@@ -44,7 +44,7 @@ export class NewsletterRepo {
 
   async update(
     email: string,
-    updatePayload: Omit<NewsletterModel, 'created' | 'email'>,
+    updatePayload: Pick<NewsletterModel, 'verified'>,
   ): Promise<NewsletterModel> {
     // check if email exists
     const existing = await this.findOne(email);

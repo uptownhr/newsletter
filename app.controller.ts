@@ -52,7 +52,7 @@ export class AppController {
       }
 
       // update record
-      await this.repo.update(decoded.email, { ...record, verified: true });
+      await this.repo.update(decoded.email, { verified: true });
     } catch (err) {
       // err
       console.error('err', err);
