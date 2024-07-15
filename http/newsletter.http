@@ -3,5 +3,5 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-  "email": "x2@x.com"
+  "email": "x3@x.com"
 }

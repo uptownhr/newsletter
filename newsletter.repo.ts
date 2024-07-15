@@ -1,10 +1,7 @@
 import KvKey = Deno.KvKey;
-const kv = await Deno.openKv();
+import { NewsletterModel } from './app.controller.ts';
 
-interface NewsletterModel {
-  email: string;
-  created: Date;
-}
+const kv = await Deno.openKv();
 
 interface ParsedId {
   kvKey: string;
@@ -29,9 +26,42 @@ export class NewsletterRepo {
     const created = await kv.set(id, {
       email,
       created: new Date(),
+      verified: false,
     } satisfies NewsletterModel);
 
     console.log('created', created);
+
+    const res = await kv.get<NewsletterModel>(id);
+
+    console.log('get', res);
+
+    if (res.value === null) {
+      throw new Error('Failed to create newsletter');
+    }
+
+    return res.value;
+  }
+
+  async update(
+    email: string,
+    updatePayload: Omit<NewsletterModel, 'created' | 'email'>,
+  ): Promise<NewsletterModel> {
+    // check if email exists
+    const existing = await this.findOne(email);
+
+    if (!existing) {
+      throw new Error('Record for email Does not exist');
+    }
+
+    const id = this.createId(email);
+
+    const updated = await kv.set(id, {
+      ...updatePayload,
+      email,
+      created: existing.created,
+    } satisfies NewsletterModel);
+
+    console.log('updated', updated);
 
     const res = await kv.get<NewsletterModel>(id);
 

@@ -6,6 +6,7 @@
     "@nestjs/common": "npm:@nestjs/common@^10.3.9",
     "@nestjs/core": "npm:@nestjs/core@^10.3.9",
     "@nestjs/platform-express": "npm:@nestjs/platform-express@^10.3.9",
+    "jsonwebtoken": "npm:jsonwebtoken@^9.0.2",
     "slugify": "npm:slugify@^1.6.6"
   },
   "compilerOptions": {
