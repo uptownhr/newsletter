@@ -1,11 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
 @Controller()
 export class AppController {
   constructor() {}
 
-  @Get('/')
-  hello() {
-    return 'Hello World!';
+  @Get('/health')
+  health() {
+    return 'OK';
+  }
+
+  @Post('/register')
+  register() {
+    return 'Register';
+  }
+
+  @Get('/verify/:token')
+  verify() {
+    return 'Verify';
   }
 }
