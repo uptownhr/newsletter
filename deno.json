@@ -1,14 +1,16 @@
 {
   "tasks": {
-    "dev": "deno run --watch --allow-read --allow-env --allow-net main.ts"
+    "dev": "deno run --watch --allow-read --allow-env --allow-net --unstable-kv main.ts"
   },
   "imports": {
     "@nestjs/common": "npm:@nestjs/common@^10.3.9",
     "@nestjs/core": "npm:@nestjs/core@^10.3.9",
-    "@nestjs/platform-express": "npm:@nestjs/platform-express@^10.3.9"
+    "@nestjs/platform-express": "npm:@nestjs/platform-express@^10.3.9",
+    "slugify": "npm:slugify@^1.6.6"
   },
   "compilerOptions": {
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
   }
 }

@@ -1,8 +1,13 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { NewsletterRepo } from './newsletter.repo.ts';
+
+class RegisterInput {
+  email: string;
+}
 
 @Controller()
 export class AppController {
-  constructor() {}
+  constructor(private readonly repo: NewsletterRepo) {}
 
   @Get('/health')
   health() {
@@ -10,7 +15,8 @@ export class AppController {
   }
 
   @Post('/register')
-  register() {
+  async register(@Body() input: RegisterInput) {
+    const res = await this.repo.create(input.email);
     return 'Register';
   }
 

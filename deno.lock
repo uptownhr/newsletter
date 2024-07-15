@@ -682,7 +682,8 @@
     "dependencies": [
       "npm:@nestjs/common@^10.3.9",
       "npm:@nestjs/core@^10.3.9",
-      "npm:@nestjs/platform-express@^10.3.9"
+      "npm:@nestjs/platform-express@^10.3.9",
+      "npm:slugify@^1.6.6"
     ],
     "packageJson": {
       "dependencies": [
